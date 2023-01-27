@@ -11,9 +11,9 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/base',
-    name: 'base',
-    component: () => import('../views/Base1.vue')
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/Login.vue')
   },
   {
     path: '/task',
