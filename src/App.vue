@@ -2,7 +2,8 @@
   
   <div id="app">
     <nav class="navbar" style="background-color: #03658C;" height = 30px>
-    </nav> 
+    </nav>
+    <div class="spacer"></div> 
     <div class="container">
       <div class="row">
         <div class="col-4"> 
@@ -10,10 +11,10 @@
         alt="SmartSoft Solutions" width="200" height="48">
         </div>
         <div class="col-4"> 
-        hi
+        
         </div>
         <div class="col-4"> 
-        <h3 font-weight="bold">Administrador de Tareas</h3>
+        <h4 style="color: #03658C; font-weight: bold" > Administrador de Tareas</h4>
 
         </div>
         
@@ -48,6 +49,12 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #03658C;
+}
+div.spacer
+{
+    font-size: 0; 
+    height: 20px;
+    line-height: 0;
 }
 
 </style>
