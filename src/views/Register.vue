@@ -3,11 +3,11 @@
     <BlobBg />
     <b-row align-v="center" align-h="center">
       <b-col md="6">
-        <FormLogin />
+        <FormRegister />
       </b-col>
       <b-col md="6">
         <b-img
-          src="../assets/images/business.png"
+          src="../assets/images/business-like.png"
           fluid
           class="businessImg scale-in-bottom"
           center
@@ -18,12 +18,12 @@
 </template>
 
 <script>
-import FormLogin from "../components/FormLogin";
+import FormRegister from "../components/FormRegister";
 import BlobBg from "../components/BlobBg";
 
 export default {
   components: {
-    FormLogin,
+    FormRegister,
     BlobBg
   },
 };
