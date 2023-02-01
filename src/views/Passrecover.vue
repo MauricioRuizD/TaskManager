@@ -6,9 +6,9 @@
 
                     <form>
                         <div class="row">
-                            <div class="col-4"></div>
-                            <div class="col-4">
-                                <h3 >Ingreso </h3>
+                            <div class="col-2"></div>
+                            <div class="col-9">
+                                <h3 >Recuperar contraseña </h3>
                             </div>
                             <p></p>
                         </div>   
@@ -17,15 +17,12 @@
                             <input type="email" class="form-control form-control-lg" style=" border-color:#026993"/>
                         </div>
                         <p></p>
-                        <div class="form-group">
-                            <label>Contraseña</label>
-                            <input type="password" class="form-control form-control-lg" style=" border-color:#026993" />
-                        </div>
+                        
                     <p></p><p></p>
                     <div class="row">
                         <div class="col-3"></div>
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-sm btn-action " id="ingresar">Ingresar</button>
+                            <button type="submit" class="btn btn-primary btn-sm btn-action " id="ingresar">Recuperar</button>
                         </div> 
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-sm btn-action " id="ingresar">Borrar</button>
@@ -36,18 +33,7 @@
                         <p></p>
                         <p></p>
                     </div> 
-                    <div class="row">
-                        <div class="col-1"></div>
-                        <div class="col-6">
-                           <router-link to="/passrecover">Recordar contraseña</router-link>
-                        </div> 
-                        <div class="col-5">
-                            
-                            <router-link to="/register">Crear una cuenta nueva</router-link>
-                            
-                        </div>  
                         
-                    </div>      
                     </form>
                 </div>
             </div>

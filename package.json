@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.3",
     "core-js": "^3.8.3",
     "mdbootstrap": "^4.20.0",
     "vue": "^2.6.14",
