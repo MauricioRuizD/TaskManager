@@ -13,7 +13,7 @@ const routes = [
   {
     path: '/task',
     name: 'task',
-    component: () => import('../views/Task.vue')
+    component: () => import('../views/Task.vue'),
   }
 ]
 
