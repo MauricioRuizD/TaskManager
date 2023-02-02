@@ -60,7 +60,7 @@
     </div>
     <div class="row justify-content-end" style="padding: 24px 0px 24px 24px;">
       <div class="col-2 align-self-end">
-        <button type="button" class="btn btn-primary btn-sm btn-action" id="btn-new-task" data-bs-toggle="modal" data-bs-target="#editTask" @click="titleModal='Nueva tarea'">Nueva tarea</button>
+        <button type="button" class="btn btn-primary btn-sm btn-action" id="btn-new-task" data-bs-toggle="modal" data-bs-target="#editTask" @click="newTask()">Nueva tarea</button>
       </div>  
     </div>
 
@@ -160,7 +160,7 @@
                         <span class="input-group-text group-label-text" id="tiempo-estimado">Tiempo estimado (horas)
                         </span>
                       </div>
-                      <input type="text" class="form-control" id="horas-estimadas" aria-describedby="tiempo-estimado" placeholder="dd/mm/aaaa" style="font-size:small; border-color:#026993" v-model="selectedItem.horasestimadas">
+                      <input type="text" class="form-control" id="horas-estimadas" aria-describedby="tiempo-estimado"  style="font-size:small; border-color:#026993" v-model="selectedItem.horasestimadas">
                     </div>
                   </div>
                 </div>
@@ -300,7 +300,6 @@ export default {
           name: 'baja'
         }
       ],
-
     }
   },
 
