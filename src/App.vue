@@ -20,13 +20,13 @@
         </div>
         <div class="row flex-nowrap">
           <div class="col-auto px-0" style="background-color: #F0F0F0;">
-              <div id="sidebar" class="collapse collapse-horizontal show border-end">
+              <div id="sidebar" class="collapse collapse-horizontal ">
                   <div id="sidebar-nav" class="list-group border-10 rounded-3 text-sm-start min-vh-100">
                     <div class="row"></div>
                     
                     
-                      <a href="/task" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar" style="background-color: #F0F0F0;"><i class="bi bi-bootstrap"></i> <span>Tareas</span> </a>
-                      <a href="/users" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar" style="background-color: #F0F0F0;"><i class="bi bi-film"></i> <span>Administrador de Usuarios</span></a>
+                      <a href="/task" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar" style="background-color: #F0F0F0;"> <span>Tareas</span> </a>
+                      <a href="/users" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar" style="background-color: #F0F0F0;"> <span>Administrador de Usuarios</span></a>
                        
                   </div>
               </div>
