@@ -6,8 +6,8 @@
       <div class="spacer"></div> 
       <div class="container-fluid">
         <div class="row">
-          <div class="col-1"></div>
-          <div class="col-4"> 
+          <div class="col-2"></div>
+          <div class="col-3"> 
             <img class="header_logo header-logo" src="https://smartsoft.com.co/wp-content/uploads/2020/10/logo-SmartSoft.png"
           alt="SmartSoft Solutions" width="200" height="48">
           </div>
@@ -25,8 +25,8 @@
                       <div class="row"></div>
                       
                       
-                        <a href="/task" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar" style="background-color: #F0F0F0;"> <span>Tareas</span> </a>
-                        <a href="/users" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar" style="background-color: #F0F0F0;"> <span>Administrador de Usuarios</span></a>
+                        <a href="/task" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar" style="background-color: #F0F0F0;"> <h6 style="color: #03658C; font-weight: bold" > Inicio</h6 > </a>
+                        <a href="/users" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar" style="background-color: #F0F0F0;"> <h6 style="color: #03658C; font-weight: bold" > Administrador de Usuarios</h6></a>
                          
                     </div>
                 </div>
