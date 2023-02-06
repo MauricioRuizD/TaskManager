@@ -94,7 +94,7 @@
                 </svg>
               </button>
               <span style="padding: 0px 8px 0px 0px;"></span>
-              <button type="button" class="btn btn-done-data" data-bs-toggle="modal" data-bs-target="#actionTask" @click="modalAction('d', item)">
+              <button type="button" class="btn btn-done-data" data-bs-toggle="modal" data-bs-target="#actionTask" @click="modalAction('d', item)" v-bind:disabled="item.disabledDoneTask">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-check" viewBox="0 0 16 16">
                   <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
                 </svg>
@@ -212,7 +212,6 @@
         </div>
       </template>
 
-
       <!-- Modal confirm delete/done task-->
       <template>        
         <div class="modal fade" id="actionTask" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -260,6 +259,7 @@ export default {
         asignadoa: '',
         asignadoaId: 0,
         estado: '',
+        disabledDoneTask: false,
       },
       defaultItem: {
         id: '',
@@ -271,6 +271,7 @@ export default {
         asignadoa: '',
         asignadoaId: 0,
         estado: 'abierta',
+        disabledDoneTask: false,
       },
       items: [
         {
@@ -283,6 +284,7 @@ export default {
           asignadoa: 'Felipe XXXXXX',
           asignadoaId: 1000,
           estado: 'abierta',
+          disabledDoneTask: false,
         },
         {
           id: '2',
@@ -294,6 +296,7 @@ export default {
           asignadoa: 'Felipe YYYYYY',
           asignadoaId: 2000,
           estado: 'abierta',
+          disabledDoneTask: false,
         },
         {
           id: '3',
@@ -305,6 +308,7 @@ export default {
           asignadoa: 'Felipe ZZZZZ',
           asignadoaId: 3000,
           estado: 'abierta',
+          disabledDoneTask: false,
         }
       ],
 
@@ -418,6 +422,7 @@ export default {
 
     doneTask() {
       this.items[this.selectedIndex].estado = 'cerrada';
+      this.items[this.selectedIndex].disabledDoneTask = true;
     },
 
   }
