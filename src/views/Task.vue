@@ -60,7 +60,7 @@
     </div>
     <div class="row justify-content-end" style="padding: 24px 0px 24px 24px;">
       <div class="col-2 align-self-end">
-        <button type="button" class="btn btn-primary btn-sm btn-action" id="btn-new-task" data-bs-toggle="modal" data-bs-target="#editTask" @click="newTask()">Nueva tarea</button>
+        <button type="button" class="btn btn-primary btn-sm btn-action" id="btn-new-task" data-bs-toggle="modal" data-bs-target="#editTask" @click="defaultTask()">Nueva tarea</button>
       </div>  
     </div>
 
@@ -94,13 +94,13 @@
                 </svg>
               </button>
               <span style="padding: 0px 8px 0px 0px;"></span>
-              <button type="button" class="btn btn-done-data" @click="doneTask(item)">
+              <button type="button" class="btn btn-done-data" data-bs-toggle="modal" data-bs-target="#actionTask" @click="modalAction('d', item)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-check" viewBox="0 0 16 16">
                   <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
                 </svg>
               </button>
               <span style="padding: 0px 8px 0px 0px;"></span>
-              <button type="button" class="btn btn-remove-data" data-bs-toggle="modal" data-bs-target="#confirmDelete" >
+              <button type="button" class="btn btn-remove-data" data-bs-toggle="modal" data-bs-target="#actionTask" @click="modalAction('r', item)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
                   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                   <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -215,22 +215,18 @@
 
       <!-- Modal confirm delete/done task-->
       <template>        
-        <div class="modal fade" id="confirmDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="actionTask" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">{{ titleModal }}</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">{{ titleModalAction }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
-                
-                ¿Está seguro de querer realizar esta acción?
-
+              <div class="modal-body">{{ msgAction }}
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-primary"  data-bs-dismiss="modal">Confirmar</button>
-                </div>
-              
+                  <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal" @click="close()" >Cancelar</button>
+                  <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" @click="actionTask()" >Confirmar</button>
+                </div>              
               </div>
             </div>
           </div>
@@ -244,13 +240,16 @@
 
 export default {
     name: "Task",
-    msgDoneTask: 0,
-    msgDeleteTask: 0,
 
   data () {
     return {
       titleModal: 'Nueva tarea',
+      titleModalAction: '',
+      msgAction: '',
+      confirmAction: 0,
+      msgNewTask: 0,
       editedIndex: -1,
+      selectedIndex: -1,
       editedItem: {
         id: '',
         inicio: '',
@@ -265,7 +264,7 @@ export default {
       defaultItem: {
         id: '',
         inicio: '02/02/2023',
-        prioridad: '',
+        prioridad: 'normal',
         nombre: '',
         detalle: '',
         horasestimadas: 0,
@@ -343,35 +342,54 @@ export default {
 
   methods: {
 
+    actionTask() {
+      if(this.msgDeleteTask) {
+        this.deleteTask();
+      }
+      else {
+        this.doneTask();
+      }
+    },
+
+    modalAction(option, item) {
+
+      //Si se oprime el botón eliminar
+      if (option == "r") {
+        this.msgAction = '¿Está seguro que desea eliminar la tarea [' + item.nombre + ']?';
+        this.titleModalAction = 'Eliminar tarea';
+        this.msgDeleteTask = 1;
+      }
+      //Sino se oprimió el botón tarea realizada
+      else {
+        this.msgAction = '¿Está seguro que desea finalizar la tarea [' + item.nombre + ']?';
+        this.titleModalAction = 'Finalizar tarea';
+      }
+      this.$nextTick(() => {
+        this.selectedIndex = this.items.indexOf(item);
+      });
+    },
+
     close() {
       this.$nextTick(() => {
         this.editedItem = Object.assign({}, this.defaultItem);
         this.editedIndex = -1;
       });
+      this.selectedIndex = -1;
     },
 
-    deleteTask(item) {
-      this.msgDeleteTask = 1
-      //this.items.splice(this.items.indexOf(item), 1);
+    deleteTask() {
+      this.$nextTick(() => {
+        this.items.splice(this.selectedIndex, 1);
+      });
     },
 
-    newTask () {
-
-      this.titleModal = 'Nueva tarea',
-      this.editedIndex = -1,
-      this.editedItem.id = 0,
-      this.editedItem.inicio = '',
-      this.editedItem.prioridad = '',
-      this.editedItem.nombre = '',
-      this.editedItem.detalle = '',
-      this.editedItem.horasestimadas = '',
-      this.editedItem.asignadoa = '',
-      this.editedItem.asignadoaId = '',
-      this.editedItem.estado = 'abierta'
+    defaultTask () {
+      this.titleModal = 'Nueva tarea';
+      this.editedIndex = -1;
+      this.editedItem = Object.assign({}, this.defaultItem);
     },
 
     editTask(item) {
-
       this.editedIndex = this.items.indexOf(item);
       this.editedItem = Object.assign({}, item);
 
@@ -388,15 +406,18 @@ export default {
 
     saveTask() {
       
-      this.items[this.editedIndex] = Object.assign({}, this.editedItem);
-      this.close()
+      if(this.editedIndex === -1) {
+        this.items.push(this.editedItem)
+        this.close();
+      } 
+      else {
+        this.items[this.editedIndex] = Object.assign({}, this.editedItem);
+      } 
+      this.close();      
     },
 
-    doneTask(item) {
-      this.editedItem.estado = 'cerrada';
-      this.editedIndex = this.items.indexOf(item);
-
-      this.items[this.editedIndex].estado = this.editedItem.estado;
+    doneTask() {
+      this.items[this.selectedIndex].estado = 'cerrada';
     },
 
   }
