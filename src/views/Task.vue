@@ -1,67 +1,66 @@
 <template>
-    <div class="container">
-      <div class="row">
-        <div class="col-4">
-          <div class="input-group mb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="search-task">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+            </span>
+          </div>
+          <input type="text" class="form-control" id="basic-url" aria-describedby="search-task" placeholder="Buscar tarea" style="font-size:small">
+        </div>
+      </div>      
+    </div>
+  
+    <div style="padding: 24px 24px 24px 24px;border: 1px solid #026993; background-color: #F0F0F0;">
+      <div class="row justify-content-start">
+        <div class="col-3 p-1">
+          <div class="input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="search-task">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                  </svg>
+              <span class="input-group-text group-label-text" id="search-estado">Estado
               </span>
             </div>
-            <input type="text" class="form-control" id="basic-url" aria-describedby="search-task" placeholder="Buscar tarea" style="font-size:small">
-          </div>
-        </div>      
-      </div>
-    
-      <div style="padding: 24px 24px 24px 24px;border: 1px solid #026993; background-color: #F0F0F0;">
-        <div class="row justify-content-start">
-          <div class="col-3 p-1">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text group-label-text" id="search-estado">Estado
-                </span>
-              </div>
-              <select class="form-select" size="3" id="dropdownEstado" aria-describedby="search-estado" multiple style="font-size:small; border-color:#026993">
-                <option selected value="opened">Abierta</option>
-                <option value="closed">Cerrada</option>
-                <option value="deleted">Eliminada</option>
-              </select>
-  
-            </div>
-          </div>
-  
-          <div class="col-1">
-          </div> 
-          <div class="col-3">
-            <div class="input-group mb-5">
-              <div class="input-group-prepend">
-                <span class="input-group-text group-label-text" id="search-inicio">Inicio
-                </span>
-              </div>
-              <input type="text" class="form-control" id="fecha-inicio" aria-describedby="search-inicio" placeholder="dd/mm/aaaa" style="font-size:small; border-color:#026993">
-            </div>
-          </div>
-  
-          <div class="col-3">
-            <div class="input-group mb-5">
-              <div class="input-group-prepend">
-                <span class="input-group-text group-label-text" id="search-hasta">Hasta
-                </span>
-              </div>
-              <input type="text" class="form-control" id="fecha-fin" aria-describedby="search-hasta" placeholder="dd/mm/aaaa" style="font-size:small; border-color:#026993">
-            </div>
-          </div>
-          <div class="col-1">
-            <button type="button" class="btn btn-primary btn-sm btn-action" id="btn-filtrar">Filtrar</button>
+            <select class="form-select" size="3" id="dropdownEstado" aria-describedby="search-estado" multiple style="font-size:small; border-color:#026993">
+              <option selected value="opened">Abierta</option>
+              <option value="closed">Cerrada</option>
+              <option value="deleted">Eliminada</option>
+            </select>
+
           </div>
         </div>
+
+        <div class="col-1">
+        </div> 
+        <div class="col-3">
+          <div class="input-group mb-5">
+            <div class="input-group-prepend">
+              <span class="input-group-text group-label-text" id="search-inicio">Inicio
+              </span>
+            </div>
+            <input type="text" class="form-control" id="fecha-inicio" aria-describedby="search-inicio" placeholder="dd/mm/aaaa" style="font-size:small; border-color:#026993">
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="input-group mb-5">
+            <div class="input-group-prepend">
+              <span class="input-group-text group-label-text" id="search-hasta">Hasta
+              </span>
+            </div>
+            <input type="text" class="form-control" id="fecha-fin" aria-describedby="search-hasta" placeholder="dd/mm/aaaa" style="font-size:small; border-color:#026993">
+          </div>
+        </div>
+        <div class="col-1">
+          <button type="button" class="btn btn-primary btn-sm btn-action" id="btn-filtrar">Filtrar</button>
+        </div>
       </div>
-      <div class="row justify-content-end" style="padding: 24px 0px 24px 24px;">
-        <div class="col-2 align-self-end">
-          <button type="button" class="btn btn-primary btn-sm btn-action" id="btn-new-task">Nueva tarea</button>
-        </div>  
+    </div>
+    <div class="row justify-content-end" style="padding: 24px 0px 24px 24px;">
+      <div class="col-2 align-self-end">
+        <button type="button" class="btn btn-primary btn-sm btn-action" id="btn-new-task" data-bs-toggle="modal" data-bs-target="#editTask" @click="defaultTask()">Nueva tarea</button>
       </div>  
     </div>
 
@@ -113,106 +112,14 @@
       </table>
 
       <!-- Modal new/edit task-->
-      <template>
-        <div class="modal fade" id="editTask" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">{{ titleModal }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-                  <div class="col col-2">
-                    <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text group-label-text" id="asignar-a">Asignar a
-                        </span>
-                      </div>
-                      <a class="btn btn-primary btn-sm btn-action dropdown-toggle" href="#" role="button" id="dropdownAsignarA" data-bs-toggle="dropdown" aria-expanded="false">{{ editedItem.asignadoa }}</a>
-                      <ul class="dropdown-menu" aria-labelledby="asignar-a">
-                        <li v-for="(itemAsignadoa, indexAsignado) of listaAsignado" :key="indexAsignado"><a class="dropdown-item" @click="selectAsignadoA(itemAsignadoa)">{{ itemAsignadoa.name }}</a></li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="col col-2">
-                    <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text group-label-text" id="estado">Estado
-                        </span>
-                      </div>
-                      <input type="text" class="form-control" id="estado-tarea" aria-describedby="estado" style="font-size:small; border-color:#026993" v-model="editedItem.estado">
-                    </div>
-                  </div>
-                  <div class="col col-2">
-                    <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text group-label-text" id="inicio">Inicio
-                        </span>
-                      </div>
-                      <input type="text" class="form-control" id="fecha-inicio" aria-describedby="inicio" placeholder="dd/mm/aaaa" style="font-size:small; border-color:#026993" v-model="editedItem.inicio">
-                    </div>
-                  </div>
-                  <div class="col col-2">
-                    <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text group-label-text" id="tiempo-estimado">Tiempo estimado (horas)
-                        </span>
-                      </div>
-                      <input type="text" class="form-control" id="horas-estimadas" aria-describedby="tiempo-estimado"  style="font-size:small; border-color:#026993" v-model="editedItem.horasestimadas">
-                    </div>
-                  </div>
-                </div>
-                <div class="row row-cols-4">
-                  <div class="col col-4">
-                    <div class="input-group mb-2">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text group-label-text" id="nombre-tarea">Nombre
-                        </span>
-                      </div>
-                      <input type="text" class="form-control" id="nombre" aria-describedby="nombre-tarea" style="font-size:small; border-color:#026993" v-model="editedItem.nombre">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col col-12">
-                    <div class="input-group input-group-sm mb-2">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text group-label-text" id="detalle-tarea">Detalle
-                        </span>
-                      </div>
-                      <textarea type="text" class="form-control" rows="6" id="detalle" aria-describedby="detalle-tarea" style="font-size:small; border-color:#026993" v-model="editedItem.detalle"></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="row row-cols-2">
-                  <div class="col">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text group-label-text" id="prioridad">Prioridad
-                        </span>
-                      </div>
-                      <a class="btn btn-primary btn-sm btn-action dropdown-toggle" href="#" role="button" id="dropdownPrioridad" data-bs-toggle="dropdown" aria-expanded="false">{{ editedItem.prioridad }}</a>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownPrioridad">
-                        <li v-for="(itemPrioridad, indexPrioridad) of listaPrioridad" :key="indexPrioridad"><a class="dropdown-item" @click="selectPrioridad(itemPrioridad)">{{ itemPrioridad.name }}</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" @click="close()" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary" @click="saveTask()" data-bs-dismiss="modal">Guadar</button>
-                </div>
-              
-              </div>
-            </div>
-          </div>
-        </div>
-      </template>
-
+      <DetailTask 
+        :show="showDetailTask" 
+        :titleModal="titleModal"
+        :edited-item="editedItem" 
+        :items="items"
+        :editedIndex="editedIndex"
+        @close="showDetailTask = false">
+    </DetailTask>
 
       <!-- Modal confirm delete/done task-->
       <template>        
@@ -239,11 +146,18 @@
 
 <script>
 
+import DetailTask from '@/components/DetailTask.vue';
+
 export default {
     name: "Task",
 
+  components: {
+    DetailTask,
+  },
+
   data () {
     return {
+      showDetailTask: false,
       titleModal: 'Nueva tarea',
       titleModalAction: '',
       msgAction: '',
@@ -309,35 +223,6 @@ export default {
         }
       ],
 
-      listaAsignado: [
-        {
-          id: '1000',
-          name: 'Felipe XXXXXX'
-        },
-        {
-          id: '2000',
-          name: 'Felipe YYYYYY'
-        },
-        {
-          id: '3000',
-          name: 'Felipe ZZZZZ'
-        }
-      ],
-
-      listaPrioridad: [
-        {
-          id: 'alta',
-          name: 'alta'
-        },
-        {
-          id: 'normal',
-          name: 'normal'
-        },
-        {
-          id: 'baja',
-          name: 'baja'
-        }
-      ],
     }
   },
 
@@ -391,30 +276,10 @@ export default {
     },
 
     editTask(item) {
+      this.titleModal = 'Actualizar tarea';
       this.editedIndex = this.items.indexOf(item);
       this.editedItem = Object.assign({}, item);
-
-    },
-
-    selectPrioridad(prioridad) {
-        this.editedItem.prioridad = prioridad.name;
-    },
-
-    selectAsignadoA(asignado) {
-        this.editedItem.asignadoa = asignado.name;
-        this.editedItem.asignadoaId = asignado.id;
-    },
-
-    saveTask() {
-      
-      if(this.editedIndex === -1) {
-        this.items.push(this.editedItem)
-        this.close();
-      } 
-      else {
-        this.items[this.editedIndex] = Object.assign({}, this.editedItem);
-      } 
-      this.close();      
+      this.showDetailTask = true;
     },
 
     doneTask() {
@@ -422,9 +287,5 @@ export default {
     },
 
   }
-  .label-header {
-    font-size: small;
-    color: rgba(2, 105, 147, 1);
-    font-weight: bold;
-  }
-  </style>
+}
+</script>
