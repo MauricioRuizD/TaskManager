@@ -1,0 +1,140 @@
+* 
+ 
+  body,
+  html,
+  .App,
+  .vue-template,
+  .vertical-center {
+    width: 100%;
+    height: 100%;
+  }
+  .navbar-light {
+    background-color: #ffffff;
+    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  }
+  .vertical-center {
+    display: flex;
+    text-align: left;
+    justify-content: center;
+    flex-direction: column;    
+  }
+  .inner-block {
+    width: 450px;
+    margin: auto;
+    background: #ffffff;
+    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+    padding: 40px 55px 45px 55px;
+    border-radius: 15px;
+    transition: all .3s;
+  }
+  .vertical-center .form-control:focus {
+    border-color: #2554FF;
+    box-shadow: none;
+  }
+  .vertical-center h3 {
+    text-align: center;
+    margin: 0;
+    line-height: 1;
+    padding-bottom: 20px;
+  }
+  .label {
+    font-weight: 500;
+  }
+  .forgot-password,
+  .forgot-password a {
+    text-align: right;
+    font-size: 13px;
+    padding-top: 10px;
+    color: #7a7a7a;
+    margin: 0;
+  }
+  .forgot-password a {
+    color: #2554FF;
+}
+  
+  .card {
+    width: 450px;
+    font-size: small;
+    color: rgba(2, 105, 147, 1);
+    font-weight: bold;
+    background-color: #f0f0f0;
+    
+  }
+  .cardr {
+    width: 600px;
+    font-size: small;
+    color: rgba(2, 105, 147, 1);
+    font-weight: bold;
+    background-color: #f0f0f0;
+    display: flex;
+    text-align: left;
+    justify-content: center;
+    flex-direction: column;
+    
+  }
+
+  .btn-update-data {
+    background-color: white;
+    border-color: rgb(32, 8, 245);
+    border-radius: 10px;
+    border-width: 2px;
+  }
+  
+  .btn-update-data:focus {
+    box-shadow: 0 0 0 0.2rem rgb(66, 156, 251);
+  }
+  
+  .btn-update-data:hover {
+    background-color: rgb(66, 156, 251);
+    color: white;
+  }
+  
+  .btn-done-data {
+    background-color: white;
+    border-color: rgb(147, 234, 204);
+    border-radius: 10px;
+    border-width: 2px;
+  }
+  
+  .btn-done-data:focus {
+    box-shadow: 0 0 0 0.2rem rgb(147, 234, 204);
+  }
+  
+  .btn-done-data:hover {
+    background-color: rgb(147, 234, 204);
+    color: white;
+  }
+  
+  .btn-remove-data {
+    background-color: white;
+    border-color: rgb(234, 147, 159);
+    border-radius: 10px;
+    border-width: 2px;
+  }
+  
+  .btn-remove-data:focus {
+    box-shadow: 0 0 0 0.2rem rgb(234, 147, 159);
+  }
+  
+  .btn-remove-data:hover {
+    background-color: rgb(234, 147, 159);
+    color: white;
+  }
+  
+  .group-label-text {
+    background-color: transparent;
+    border: 0px;
+    color: rgba(2, 105, 147, 1);
+    font-size: small;
+  }
+  
+  .btn-action {
+    background-color: rgba(2, 105, 147, 1);
+    font-size: small;
+  }
+  
+  .label-header {
+    font-size: small;
+    color: rgba(2, 105, 147, 1);
+    font-weight: bold;
+  }
