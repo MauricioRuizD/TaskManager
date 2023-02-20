@@ -1,9 +1,5 @@
 <template>
   <div class="app">
-    <slot name="sidebar"></slot>
-    <div class="content">
-      <slot></slot>
-    </div>
     <router-view />
   </div>
 </template>

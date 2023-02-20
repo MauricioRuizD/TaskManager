@@ -1,23 +1,8 @@
 <template>
   <div class="container-fluid">
-    <nav class="navbar" style="background-color: #03658c" height="30px"></nav>
-    <div class="spacer"></div>
-    <div class="row">
-      <div class="col-1"></div>
-      <div class="col-4"></div>
-      <img
-        class="header_logo header-logo"
-        src="https://smartsoft.com.co/wp-content/uploads/2020/10/logo-SmartSoft.png"
-        alt="SmartSoft Solutions"
-        width="200"
-        height="48"
-      />
-    </div>
-    <div class="col-3"></div>
-    <div class="col-4">
-      <h4 style="color: #03658c; font-weight: bold">Administrador de Tareas</h4>
-    </div>
-    <div class="row flex-nowrap">
+   <headerView />
+
+    <div class="row flex-nowrap" v-show="showSidebar">
       <div class="col-auto px-0" style="background-color: #f0f0f0">
         <div id="sidebar" class="collapse collapse-horizontal">
           <div
@@ -25,14 +10,11 @@
             class="list-group border-10 rounded-3 text-sm-start min-vh-100"
           >
             <div class="row"></div>
-
             <a
-              href="./components/TaskView.vue"
               class="list-group-item border-end-0 d-inline-block text-truncate"
               data-bs-parent="#sidebar"
               style="background-color: #f0f0f0"
-            >
-              <span>Tareas</span>
+            ><router-link to="/app/task">Tareas</router-link>
             </a>
             <a
               href="./components/UsersView.vue"
@@ -69,12 +51,10 @@
         <i class="bi bi-heart"></i>
       </main>
     </div>
+    <div class="content">
+      <router-view @showSidebar="showSidebar = $event"></router-view>
+    </div>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from "vue";
 
-export default defineComponent({
-  name: "SidebarView",
-});
-</script>
+<script lang="ts" src="./sidebarView.ts"></script>

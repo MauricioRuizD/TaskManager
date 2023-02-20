@@ -83,7 +83,7 @@
                     aria-describedby="inicio"
                     placeholder="dd/mm/aaaa"
                     style="font-size: small; border-color: #026993"
-                    v-model="editedItem.inicio"
+                    v-model="fecha"
                     required
                     pattern="[a-zA-Z0-9]+"
                     title="Debe ingresar la fecha de la tarea"

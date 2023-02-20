@@ -82,4 +82,9 @@ export default class detailTask extends Vue {
     this.editedItem.asignadoa = asignado.name;
     this.editedItem.asignadoaId = asignado.id;
   }
+
+  get fecha(): string {
+    return this.editedItem.inicio.toISOString().slice(0, 10).replace(/-/g, '/');
+  }
+
 }

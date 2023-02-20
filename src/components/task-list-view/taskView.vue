@@ -140,7 +140,7 @@
         <tbody>
           <tr v-for="(item, index) of tasks" :key="index">
             <td>{{ item.id }}</td>
-            <td>{{ item.inicio }}</td>
+            <td>{{ item.inicio.toISOString().slice(0, 10).replace(/-/g, '/') }}</td>
             <td>{{ item.prioridad }}</td>
             <td>{{ item.nombre }}</td>
             <td>{{ item.horasestimadas }}</td>
@@ -152,6 +152,7 @@
                 class="btn btn-update-data"
                 data-bs-toggle="modal"
                 data-bs-target="#editTask"
+                title="Editar tarea"
                 @click="editTask(item)"
               >
                 <svg
@@ -173,9 +174,11 @@
                 class="btn btn-done-data"
                 data-bs-toggle="modal"
                 data-bs-target="#actionTask"
+                title="Tarea hecha"
                 @click="modalAction('d', item)"
                 v-bind:disabled="item.disabledDoneTask"
               >
+
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -195,6 +198,7 @@
                 class="btn btn-remove-data"
                 data-bs-toggle="modal"
                 data-bs-target="#actionTask"
+                title="Eliminar tarea"
                 @click="modalAction('r', item)"
               >
                 <svg
@@ -219,8 +223,7 @@
         </tbody>
       </table>
 
-      <!-- Modal new/edit task-->
-      
+      <!-- Modal new/edit task-->      
       <DetailTask 
         :show="showDetailTask" 
         :titleModal="titleModal"

@@ -1,5 +1,5 @@
 import { StatusTask } from './../../enums/status-task';
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import { task } from "@/models/interfaces/task";
 
 import DetailTask from '../detail-task/detailTask.vue';
@@ -145,5 +145,10 @@ export default class taskView extends Vue {
   doneTask() {
     this.tasks[this.selectedIndex].estado = StatusTask.DONE;
     this.tasks[this.selectedIndex].disabledDoneTask = true;
+  }
+
+  created() {
+    document.title = "Tareas";
+    this.$emit("showSidebar", true);
   }
 }
