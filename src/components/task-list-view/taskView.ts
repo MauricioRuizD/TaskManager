@@ -24,7 +24,7 @@ export default class taskView extends Vue {
 
   public editedItem: task = {
     id: 0,
-    inicio: new Date('01/01/2000'),
+    inicio: new Date(),
     prioridad: '',
     nombre: '',
     detalle: '',
@@ -37,7 +37,7 @@ export default class taskView extends Vue {
 
   public defaultItem: task = {
     id: 0,
-    inicio: new Date('01/01/2000'),
+    inicio: new Date(),
     prioridad: 'normal',
     nombre: '',
     detalle: '',

@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div>
         <nav class="navbar" style="background-color: #03658C;" height=30px>
         </nav>
         <div class="spacer"></div>

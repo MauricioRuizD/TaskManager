@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div>
    <headerView />
 
     <div class="row flex-nowrap" v-show="showSidebar">

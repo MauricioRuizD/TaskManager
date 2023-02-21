@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div>
     <headerView />
     <div class="position-absolute top-30 start-50 translate-middle-x">
         <div class="card">
