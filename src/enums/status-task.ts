@@ -1,5 +1,5 @@
 export enum StatusTask {
-    OPEN = 'abierto',
-    DONE = 'hecho',
-    REMOVED = 'eliminado',
+    OPEN = 'abierta',
+    DONE = 'hecha',
+    REMOVED = 'eliminada',
 }

@@ -1,27 +1,25 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import LoginView from '@/components/login-view/loginView.vue'
-import LoginLayout from '@/components/login-layout/loginLayout.vue'
 import TaskView from '@/components/task-list-view/taskView.vue'
-import SidebarView from '@/components/side-bar/sidebarView.vue'
 
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    component: LoginLayout,
-    children: [
-      { path: '', component: LoginView }
-    ]
+    name: 'home',
+    component: LoginView
   },
   {
-    path: '/app',
-    component: SidebarView,
-    children: [
-      { path: '', component: TaskView },
-      { path: 'task', component: TaskView }
-    ]
+    path: '/',
+    name: 'login',
+    component: LoginView
+  },
+  {
+    path: '/task',
+    name: 'task',
+    component: TaskView
   },
 ]
 

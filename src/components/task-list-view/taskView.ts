@@ -1,17 +1,18 @@
-import { StatusTask } from './../../enums/status-task';
+import { StatusTask, PriorityTask } from './../../enums';
 import { Component, Vue } from "vue-property-decorator";
-import { task } from "@/models/interfaces/task";
-
-import DetailTask from '../detail-task/detailTask.vue';
+import { store, storeTypes } from "@/store";
+import { Tasks } from "@/models/interfaces/tasks";
+//import DetailTask from '../detail-task/detailTask.vue';
 
 @Component({
   name: 'taskView',
-  components: { DetailTask }
+  //components: { DetailTask }
 })
 
 export default class taskView extends Vue {
 
-  public tasks: task[] = [];
+  public EventBus: Vue = new Vue();
+  public tasks: any[] = []
   public showDetailTask = false;
   public titleModal = 'Nueva tarea';
   public titleModalAction = '';
@@ -22,70 +23,45 @@ export default class taskView extends Vue {
   public selectedIndex = -1;
   public msgDeleteTask = false;
 
-  public editedItem: task = {
+  public editedItem: any = {
     id: 0,
-    inicio: new Date(),
-    prioridad: '',
-    nombre: '',
-    detalle: '',
-    horasestimadas: 0,
-    asignadoa: '',
-    asignadoaId: 0,
-    estado: StatusTask.OPEN,
+    start: new Date(),
+    priority: PriorityTask.NORMAL,
+    name: '',
+    detail: '',
+    estimatedTime: 0,
+    assignedTo: '',
+    assignedToId: 0,
+    status: StatusTask.OPEN,
     disabledDoneTask: false,
   };
 
-  public defaultItem: task = {
+  public defaultItem: any = {
     id: 0,
-    inicio: new Date(),
-    prioridad: 'normal',
-    nombre: '',
-    detalle: '',
-    horasestimadas: 0,
-    asignadoa: '',
-    asignadoaId: 0,
-    estado: StatusTask.OPEN,
+    start: new Date(),
+    priority: PriorityTask.NORMAL,
+    name: '',
+    detail: '',
+    estimatedTime: 0,
+    assignedTo: '',
+    assignedToId: 0,
+    status: StatusTask.OPEN,
     disabledDoneTask: false,
   }
 
   constructor(){
     super();
-    this.tasks.push({
-      id: 1,
-      inicio: new Date('01/01/2020'),
-      prioridad: 'alta',
-      nombre: 'Crear una tarea 1',
-      detalle: 'Este es el detalle de la tarea 1',
-      horasestimadas: 12,
-      asignadoa: 'Felipe XXXXXX',
-      asignadoaId: 1000,
-      estado: StatusTask.OPEN,
-      disabledDoneTask: false,
-    },
-    {
-      id: 2,
-      inicio: new Date('01/01/2021'),
-      prioridad: 'normal',
-      nombre: 'Crear una tarea 2',
-      detalle: 'Este es el detalle de la tarea 2',
-      horasestimadas: 9,
-      asignadoa: 'Felipe YYYYYY',
-      asignadoaId: 2000,
-      estado: StatusTask.OPEN,
-      disabledDoneTask: false,
-    },
-    {
-      id: 3,
-      inicio: new Date('01/01/2023'),
-      prioridad: 'normal',
-      nombre: 'Crear una tarea 3',
-      detalle: 'Este es el detalle de la tarea 3',
-      horasestimadas: 5,
-      asignadoa: 'Felipe ZZZZZ',
-      asignadoaId: 3000,
-      estado: StatusTask.OPEN,
-      disabledDoneTask: false,
+  }
+
+  
+  async mounted(): Promise<any> {
+    await store.dispatch(storeTypes.tasks.actions.getAllTasks())
+    .then((tasks: any) => {
+      if(store.state.tasks){
+          this.tasks = store.state.tasks?.tasks;
+      }
     })
+    
   }
 
   actionTask() {
@@ -97,17 +73,17 @@ export default class taskView extends Vue {
     }
   }
 
-  modalAction(option: string, item: task) {
+  modalAction(option: string, item: Tasks) {
 
     //Si se oprime el botón eliminar
     if (option == "r") {
-      this.msgAction = '¿Está seguro que desea eliminar la tarea [' + item.nombre + ']?';
+      this.msgAction = '¿Está seguro que desea eliminar la tarea [' + item.name + ']?';
       this.titleModalAction = 'Eliminar tarea';
       this.msgDeleteTask = true;
     }
     //Sino se oprimió el botón tarea realizada
     else {
-      this.msgAction = '¿Está seguro que desea finalizar la tarea [' + item.nombre + ']?';
+      this.msgAction = '¿Está seguro que desea finalizar la tarea [' + item.name + ']?';
       this.titleModalAction = 'Finalizar tarea';
     }
     this.$nextTick(() => {
@@ -135,7 +111,7 @@ export default class taskView extends Vue {
     this.editedItem = Object.assign({}, this.defaultItem);
   }
 
-  editTask(item: task) {
+  editTask(item: Tasks) {
     this.titleModal = 'Actualizar tarea';
     this.editedIndex = this.tasks.indexOf(item);
     this.editedItem = Object.assign({}, item);
@@ -143,7 +119,7 @@ export default class taskView extends Vue {
   }
 
   doneTask() {
-    this.tasks[this.selectedIndex].estado = StatusTask.DONE;
+    this.tasks[this.selectedIndex].status = StatusTask.DONE;
     this.tasks[this.selectedIndex].disabledDoneTask = true;
   }
 

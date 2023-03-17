@@ -1,5 +1,6 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { task } from "@/models/interfaces/task";
+import { Tasks } from "@/models/interfaces/tasks";
+//import { StatusTask, PriorityTask } from './../../enums';
 
 interface Prioridad {
   id: number;
@@ -19,8 +20,8 @@ export default class detailTask extends Vue {
 
   @Prop() readonly titleModal!: string;
   @Prop() readonly show!: boolean;
-  @Prop() readonly items!: task[];
-  @Prop() readonly editedItem!: task;
+  @Prop() readonly items!: Tasks[];
+  @Prop() readonly editedItem!: Tasks;
   @Prop() readonly editedIndex!: number;
 
   public listaPrioridad: Prioridad[] = [];
@@ -75,16 +76,16 @@ export default class detailTask extends Vue {
   }
   
   selectPrioridad(prioridad: Prioridad) {
-    this.editedItem.prioridad = prioridad.name;
+    //this.editedItem.priority = prioridad.name;
   }
 
   selectAsignadoA(asignado: AsignadoA) {
-    this.editedItem.asignadoa = asignado.name;
-    this.editedItem.asignadoaId = asignado.id;
+    //this.editedItem.asignadoa = asignado.name;
+    //this.editedItem.asignadoaId = asignado.id;
   }
 
   get fecha(): string {
-    return this.editedItem.inicio.toISOString().slice(0, 10).replace(/-/g, '/');
+    return this.editedItem.start.toISOString().slice(0, 10).replace(/-/g, '/');
   }
 
 }

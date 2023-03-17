@@ -1,1 +1,1 @@
-export * from './interfaces/task'
+export * from './interfaces/tasks'

@@ -140,12 +140,12 @@
         <tbody>
           <tr v-for="(item, index) of tasks" :key="index">
             <td>{{ item.id }}</td>
-            <td>{{ item.inicio.toISOString().slice(0, 10).replace(/-/g, '/') }}</td>
-            <td>{{ item.prioridad }}</td>
-            <td>{{ item.nombre }}</td>
-            <td>{{ item.horasestimadas }}</td>
-            <td>{{ item.asignadoa }}</td>
-            <td>{{ item.estado }}</td>
+            <td>{{ item.start }}</td>
+            <td>{{ item.priority }}</td>
+            <td>{{ item.nanme }}</td>
+            <td>{{ item.estimatedTime }}</td>
+            <td>" item.asignadoa "</td>
+            <td>{{ item.status }}</td>
             <td>
               <button
                 type="button"
@@ -223,7 +223,7 @@
         </tbody>
       </table>
 
-      <!-- Modal new/edit task-->      
+      <!--       
       <DetailTask 
         :show="showDetailTask" 
         :titleModal="titleModal"
@@ -231,7 +231,7 @@
         :items="tasks"
         :editedIndex="editedIndex"       
         @close="showDetailTask = false">
-      </DetailTask>
+      </DetailTask>Modal new/edit task-->
       
       <!-- Modal confirm delete/done task-->
       <template>
